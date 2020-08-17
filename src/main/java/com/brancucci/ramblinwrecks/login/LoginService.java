@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class LoginService {
-    LoginRepository loginRepository;
+    private LoginRepository loginRepository;
 
     public LoginService(LoginRepository loginRepository){
         this.loginRepository = loginRepository;

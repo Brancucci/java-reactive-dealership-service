@@ -1,11 +1,18 @@
 package com.brancucci.ramblinwrecks.login;
 
-import lombok.Builder;
-import lombok.Value;
-import org.reactivestreams.Publisher;
+import lombok.*;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-@Value
+@Getter
+@ToString
+@EqualsAndHashCode
 @Builder
+@Table
+@AllArgsConstructor
 public class User {
-    UserKey userKey;
+    @PrimaryKey
+    String username;
+    String role;
+    String password;
 }

@@ -1,0 +1,8 @@
+#Cassandra configuration.
+cassandra:
+    port: 9042
+    keyspace: ramblin_wrecks
+    contactpoints: 127.0.0.1
+    basepackages: com.brancucci.ramblinwrecks
+    username: admin
+    password: admin
