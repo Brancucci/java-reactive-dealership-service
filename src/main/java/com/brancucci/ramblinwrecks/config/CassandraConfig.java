@@ -1,4 +1,4 @@
-package com.brancucci.ramblinwrecks;
+package com.brancucci.ramblinwrecks.config;
 
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.HostDistance;
@@ -6,6 +6,7 @@ import com.datastax.driver.core.PoolingOptions;
 import com.datastax.driver.core.QueryOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.cassandra.config.AbstractReactiveCassandraConfiguration;
 import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
 import org.springframework.data.cassandra.config.SchemaAction;
@@ -13,6 +14,7 @@ import org.springframework.data.cassandra.repository.config.EnableReactiveCassan
 
 @Configuration
 @EnableReactiveCassandraRepositories
+@Profile("!test")
 public class CassandraConfig extends AbstractReactiveCassandraConfiguration {
     @Value("${cassandra.contactpoints}")
     private String contactPoints;

@@ -1,0 +1,4 @@
+cassandra:
+  keyspace: ramblin_wrecks
+  port: 9142
+  contactpoints: 127.0.0.1
