@@ -58,23 +58,68 @@ public class LoginControllerIT {
 
         Mockito.when(loginRepository.findById(USERNAME)).thenReturn(Mono.just(user));
 
-        User userResult = webClient.post()
+        webClient.post()
                 .uri("/login")
                 .body(BodyInserters.fromObject(userDto))
                 .exchange()
                 .expectStatus()
                 .isOk()
-                .expectBody(User.class)
-                .returnResult()
-                .getResponseBody();
+                .expectBody()
+                .jsonPath("$.username").isEqualTo(USERNAME)
+                .jsonPath("$.role").isEqualTo(USERNAME)
+                .jsonPath("$.password").isEqualTo(USERNAME);
 
         Mockito.verify(loginRepository, times(1)).findById(USERNAME);
 
-        StepVerifier.create(Mono.just(userResult))
-                .expectNext(user)
-                .verifyComplete();
-
     }
+
+    @Test
+    public void userDoesNotExist_returnsEmpty(){
+        final String USERNAME = "admin";
+        UserDto userDto = UserDto.builder()
+                .username(USERNAME)
+                .password(USERNAME)
+                .build();
+
+        Mockito.when(loginRepository.findById(USERNAME)).thenReturn(Mono.empty());
+
+        webClient.post()
+                .uri("/login")
+                .body(BodyInserters.fromObject(userDto))
+                .exchange()
+                .expectStatus()
+                .isOk();
+
+        Mockito.verify(loginRepository, times(1)).findById(USERNAME);
+    }
+
+//    @Test
+//    public void invalidLogin_ReturnsEmpty(){
+//        final String USERNAME = "admin";
+//        UserDto userDto = UserDto.builder()
+//                .username(USERNAME)
+//                .password("invalid")
+//                .build();
+//
+//        Mockito.when(loginRepository.findById(USERNAME)).thenReturn(Mono.just(user));
+//
+//        User userResult = webClient.post()
+//                .uri("/login")
+//                .body(BodyInserters.fromObject(userDto))
+//                .exchange()
+//                .expectStatus()
+//                .isOk()
+//                .expectBody(User.class)
+//                .returnResult()
+//                .getResponseBody();
+//
+//        Mockito.verify(loginRepository, times(1)).findById(USERNAME);
+//
+//        StepVerifier.create(Mono.just(userResult))
+//                .expectNext(user)
+//                .verifyComplete();
+//
+//    }
 
     // bad login
 

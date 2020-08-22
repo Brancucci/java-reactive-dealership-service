@@ -1,14 +1,11 @@
 package com.brancucci.ramblinwrecks.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/login")
 public class LoginController {
 
     private LoginService loginService;
@@ -18,9 +15,20 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @PostMapping
+    @PostMapping(value = "/login")
     public Mono<User> login(@RequestBody Mono<UserDto> userDto){
-        return userDto.flatMap(user -> loginService.login(user));
+        return userDto.log().flatMap(user -> loginService.login(user)
+            .switchIfEmpty(Mono.empty()));
+    }
+
+    @GetMapping(value = "/users")
+    public Flux<User> getUsers() {
+        return loginService.getUsers().log();
+    }
+
+    @PostMapping(value = "/register")
+    public Mono<User> registerUser(@RequestBody User user){
+        return loginService.registerUser(user);
     }
 
 }
