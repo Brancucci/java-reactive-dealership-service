@@ -11,18 +11,4 @@ public class LoginServiceTest {
     LoginService loginService;
     @Mock
     LoginRepository loginRepository;
-
-    @BeforeEach
-    public void setup(){
-        loginService = new LoginService(loginRepository);
-    }
-
-    @Test
-    public void loginInvalidCredentials_throwsError() {
-        StepVerifier
-                .create(loginService.login("admin", "wrong"))
-                .expectSubscription()
-                .expectError(BadCredentialsException.class)
-                .verify();
-    }
 }

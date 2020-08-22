@@ -35,7 +35,6 @@ public class LoginRepositoryIT {
 
     @Test
     public void findByUsername_returns_user(){
-        LOGGER.info("started test");
         User user = User.builder()
                 .username("admin")
                 .role("admin")
@@ -47,7 +46,6 @@ public class LoginRepositoryIT {
                 .expectNext(user)
                 .expectComplete()
                 .verify();
-        LOGGER.info("finished test");
     }
 
     @After

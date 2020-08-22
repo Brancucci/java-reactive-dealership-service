@@ -6,13 +6,13 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class LoginService {
-    private LoginRepository loginRepository;
+    LoginRepository loginRepository;
 
     public LoginService(LoginRepository loginRepository){
         this.loginRepository = loginRepository;
     }
 
-    public Mono<User> login(String username, String password) {
-        return Mono.error(new BadCredentialsException("error"));
+    public Mono<User> login(UserDto userDto) {
+        return loginRepository.findById(userDto.getUsername());
     }
 }
