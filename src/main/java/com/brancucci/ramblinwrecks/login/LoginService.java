@@ -1,5 +1,6 @@
 package com.brancucci.ramblinwrecks.login;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -8,6 +9,7 @@ import reactor.core.publisher.Mono;
 public class LoginService {
     LoginRepository loginRepository;
 
+    @Autowired
     public LoginService(LoginRepository loginRepository){
         this.loginRepository = loginRepository;
     }

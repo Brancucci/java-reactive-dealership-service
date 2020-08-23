@@ -18,7 +18,7 @@ import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableReactiveCassandraRepositories;
 
 @Configuration
-@EnableReactiveCassandraRepositories(basePackages = "com.brancucci.ramblinwrecks.login")
+@EnableReactiveCassandraRepositories(basePackages = "com.brancucci.ramblinwrecks")
 @Profile("!test")
 @Slf4j
 public class CassandraConfig extends AbstractReactiveCassandraConfiguration {
