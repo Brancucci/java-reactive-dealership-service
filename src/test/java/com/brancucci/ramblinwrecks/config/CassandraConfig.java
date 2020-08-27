@@ -20,7 +20,7 @@ import java.util.Collections;
 
 @Getter
 @Configuration
-@EnableCassandraRepositories(basePackages = "com.brancucci.ramblinwrecks.login")
+@EnableCassandraRepositories(basePackages = "com.brancucci.ramblinwrecks")
 @Profile("test")
 public class CassandraConfig extends AbstractCassandraConfiguration {
     private static final Log LOGGER = LogFactory.getLog(CassandraConfig.class);
@@ -47,7 +47,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     @Override
     public String[] getEntityBasePackages(){
         return new String[]{
-                "com.brancucci.ramblinwrecks.login"
+                "com.brancucci.ramblinwrecks"
         };
     }
 
