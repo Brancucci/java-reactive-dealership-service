@@ -21,6 +21,8 @@ import reactor.core.publisher.Mono;
 public class CustomerControllerIT {
     @MockBean
     private CustomerRepository customerRepository;
+    private static final String LOOKUP_CUSTOMER_URI = "/customer/lookup";
+
 
     @Autowired
     private WebTestClient webClient;
@@ -45,7 +47,7 @@ public class CustomerControllerIT {
 
 
         webClient.post()
-                .uri("/customer/lookup-customer")
+                .uri(LOOKUP_CUSTOMER_URI)
                 .body(BodyInserters.fromObject(DL_NUMBER))
                 .exchange()
                 .expectStatus()
