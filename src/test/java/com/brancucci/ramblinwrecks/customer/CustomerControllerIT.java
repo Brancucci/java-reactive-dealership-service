@@ -95,4 +95,33 @@ public class CustomerControllerIT {
                 .expectBody(ErrorResponse.class)
                 .consumeWith(response -> assertEquals(response.getResponseBody().getErrorMEssage(), "User A1234 already exists."));
     }
+
+    @Test
+    public void addCustomer_success(){
+        final String DL_NUMBER = "A1234";
+
+        Customer customer = Customer.builder()
+                .driversLicenseNumber(DL_NUMBER)
+                .firstName("John")
+                .lastName("Smith")
+                .street("1234 1st Street")
+                .city("Tampa")
+                .state(State.FL)
+                .email("abc@gmail.com")
+                .phone("1112223333")
+                .zipCode("12345")
+                .build();
+
+        Mockito.when(customerRepository.save(customer)).thenReturn(Mono.just(customer));
+
+
+        webClient.post()
+                .uri("/customer/add")
+                .body(BodyInserters.fromObject(customer))
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody()
+                .jsonPath("$.driversLicenseNumber").isEqualTo(DL_NUMBER);
+    }
 }
