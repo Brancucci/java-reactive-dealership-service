@@ -1,5 +1,6 @@
-package com.brancucci.ramblinwrecks.customer;
+package com.brancucci.ramblinwrecks.customers.customer;
 
+import com.brancucci.ramblinwrecks.customers.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -78,6 +79,6 @@ public class CustomerServiceTest {
                 .expectNext(customer)
                 .verifyComplete();
     }
-    // todo add expection handling for lookup and add customers - reference Twitter strategy
+    // todo add expection handling for lookupCustomer and add customers - reference Twitter strategy
 
 }

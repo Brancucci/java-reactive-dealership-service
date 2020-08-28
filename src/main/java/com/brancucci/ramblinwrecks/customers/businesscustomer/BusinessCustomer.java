@@ -1,5 +1,6 @@
-package com.brancucci.ramblinwrecks.customer;
+package com.brancucci.ramblinwrecks.customers.businesscustomer;
 
+import com.brancucci.ramblinwrecks.customers.State;
 import lombok.Builder;
 import lombok.Value;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;

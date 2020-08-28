@@ -1,4 +1,4 @@
-package com.brancucci.ramblinwrecks.customer;
+package com.brancucci.ramblinwrecks.customers.businesscustomer;
 
 import org.springframework.data.cassandra.repository.ReactiveCassandraRepository;
 import org.springframework.stereotype.Repository;

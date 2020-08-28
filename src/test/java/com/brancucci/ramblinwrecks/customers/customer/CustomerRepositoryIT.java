@@ -1,8 +1,11 @@
-package com.brancucci.ramblinwrecks.customer;
+package com.brancucci.ramblinwrecks.customers.customer;
 
 import com.brancucci.ramblinwrecks.RamblinWrecksApplication;
 import com.brancucci.ramblinwrecks.config.CassandraTestHelper;
+import com.brancucci.ramblinwrecks.customers.State;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.transport.TTransportException;
+import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +19,7 @@ import java.io.IOException;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {RamblinWrecksApplication.class})
 @ActiveProfiles({"test"})
+@Slf4j
 public class CustomerRepositoryIT {
 
     @Autowired
@@ -56,5 +60,12 @@ public class CustomerRepositoryIT {
         StepVerifier.create(customerRepository.findById(DL_NUMBER))
                 .expectComplete()
                 .verify();
+    }
+
+    @After
+    public void clearDatabase(){
+        log.info("cleaning up DB");
+        StepVerifier.create(customerRepository.deleteAll()).verifyComplete();
+        log.info("cleaned up db");
     }
 }

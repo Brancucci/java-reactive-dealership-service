@@ -1,7 +1,9 @@
-package com.brancucci.ramblinwrecks.customer;
+package com.brancucci.ramblinwrecks.customers.businessCustomer;
 
 import com.brancucci.ramblinwrecks.RamblinWrecksApplication;
+import com.brancucci.ramblinwrecks.customers.businesscustomer.BusinessCustomer;
 import com.brancucci.ramblinwrecks.config.CassandraTestHelper;
+import com.brancucci.ramblinwrecks.customers.businesscustomer.BusinessCustomerRepository;
 import org.apache.thrift.transport.TTransportException;
 import org.junit.BeforeClass;
 import org.junit.Test;
