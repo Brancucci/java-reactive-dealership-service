@@ -11,4 +11,12 @@ import org.springframework.data.cassandra.core.mapping.Table;
 public class BusinessCustomer {
     @PrimaryKey
     String taxIdNumber;
+    String businessName;
+    String primaryContactTitle;
+    String primaryContactName;
+    String phone;
+    String street;
+    String city;
+    State state;
+    String zipCode;
 }

@@ -11,4 +11,13 @@ import org.springframework.data.cassandra.core.mapping.Table;
 public class Customer {
     @PrimaryKey
     String driversLicenseNumber;
+    String firstName;
+    String lastName;
+    String phone;
+    String email;
+    String street;
+    String city;
+    State state;
+    String zipCode;
+
 }

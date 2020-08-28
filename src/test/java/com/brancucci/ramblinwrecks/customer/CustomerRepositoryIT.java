@@ -27,16 +27,33 @@ public class CustomerRepositoryIT {
     }
 
     @Test
-    public void saveUser_success(){
+    public void lookupCustomer_returnsUser(){
         final String DL_NUMBER = "A1234";
+
         Customer customer = Customer.builder()
                 .driversLicenseNumber(DL_NUMBER)
+                .firstName("John")
+                .lastName("Smith")
+                .street("1234 1st Street")
+                .city("Tampa")
+                .state(State.FL)
+                .email("abc@gmail.com")
+                .phone("1112223333")
+                .zipCode("12345")
                 .build();
 
         customerRepository.save(customer).block();
 
         StepVerifier.create(customerRepository.findById(DL_NUMBER))
                 .expectNext(customer)
+                .verifyComplete();
+    }
+
+    @Test
+    public void lookupCustomer_returnsEmpty(){
+        final String DL_NUMBER = "A1234";
+
+        StepVerifier.create(customerRepository.findById(DL_NUMBER))
                 .expectComplete()
                 .verify();
     }
