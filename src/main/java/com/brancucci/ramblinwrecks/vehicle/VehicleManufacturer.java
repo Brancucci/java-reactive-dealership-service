@@ -1,8 +1,6 @@
-package com.brancucci.ramblinwrecks.search;
+package com.brancucci.ramblinwrecks.vehicle;
 
-import org.springframework.data.cassandra.core.mapping.Table;
-
-public enum VehicleManufacturers {
+public enum VehicleManufacturer {
     ACURA, ALFA_ROMEO, ASTON_MARTIN, AUDI, BENTLEY, BMW, BUICK, CADILLAC, CHEVROELET, CHRYSLER, DODGE, FERRARI,
     FIAT, FORD, FREIGHTLINER, GENESIS, GMC, HONDA, HYUNDAI, INFINITY, JAGUAR, JEEP, KIA, LAMBORGHINI, LAND_ROVER,
     LEXUS, LINCOLN, LOTUS, MASERATI, MAZDA, MCLAREN, MERCEDES_BENZ, MINI, MITSUBISHI, NISSAN, PORSCHE, RAM,

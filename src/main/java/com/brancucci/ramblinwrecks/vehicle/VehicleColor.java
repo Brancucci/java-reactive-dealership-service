@@ -1,6 +1,6 @@
-package com.brancucci.ramblinwrecks.search;
+package com.brancucci.ramblinwrecks.vehicle;
 
-public enum VehicleColors {
+public enum VehicleColor {
     ALUMINUM, BEIGE, BLACK, BLUE, BROWN, BRONZE, CLARET, COPPER, CREAM, GOLD, GRAY, GREEN, MAROON, METALLIC, NAVY,
     ORANGE, PINK, PURPLE, RED, ROSE, RUST, SILVER, TAN, TURQUOISE, WHITE, YELLOW
 
