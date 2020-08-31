@@ -13,6 +13,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
 public class User {
     @PrimaryKey
     String username;
-    String role;
+    String firstname;
+    String lastname;
+    Role role;
     String password;
+
 }

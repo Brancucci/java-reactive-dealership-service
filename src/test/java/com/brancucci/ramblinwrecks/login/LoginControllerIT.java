@@ -36,7 +36,7 @@ public class LoginControllerIT {
 
         User user = User.builder()
                 .username(USERNAME)
-                .role(USERNAME)
+                .role(Role.OWNER)
                 .password(USERNAME)
                 .build();
 
@@ -50,7 +50,7 @@ public class LoginControllerIT {
                 .isOk()
                 .expectBody()
                 .jsonPath("$.username").isEqualTo(USERNAME)
-                .jsonPath("$.role").isEqualTo(USERNAME)
+                .jsonPath("$.role").isEqualTo(Role.OWNER)
                 .jsonPath("$.password").isEqualTo(USERNAME);
 
         Mockito.verify(loginRepository, times(1)).findById(USERNAME);

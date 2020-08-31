@@ -37,7 +37,7 @@ public class LoginRepositoryIT {
     public void findByUsername_returns_user(){
         User user = User.builder()
                 .username("admin")
-                .role("admin")
+                .role(Role.OWNER)
                 .password("admin")
                 .build();
 
