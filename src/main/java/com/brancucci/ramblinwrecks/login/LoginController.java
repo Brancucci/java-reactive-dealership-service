@@ -16,9 +16,9 @@ public class LoginController {
     }
 
     @PostMapping(value = "/login")
-    public Mono<User> login(@RequestBody Mono<UserDto> userDto){
-        return userDto.log().flatMap(user -> loginService.login(user)
-            .switchIfEmpty(Mono.empty()));
+    public Mono<User> login(@RequestBody UserDto userDto){
+        return loginService.login(userDto)
+            .switchIfEmpty(Mono.empty());
     }
 
     @GetMapping(value = "/users")

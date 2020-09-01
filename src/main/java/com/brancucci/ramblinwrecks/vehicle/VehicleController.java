@@ -17,7 +17,7 @@ public class VehicleController {
     }
 
     @PostMapping(path = ADD_VEHICLE_URI)
-    public Mono<Vehicle> addVehicle(@RequestBody Mono<Vehicle> vehicle){
-        return vehicle.flatMap(v -> vehicleService.addVehicle(v));
+    public Mono<Vehicle> addVehicle(@RequestBody Vehicle vehicle){
+        return vehicleService.addVehicle(vehicle);
     }
 }

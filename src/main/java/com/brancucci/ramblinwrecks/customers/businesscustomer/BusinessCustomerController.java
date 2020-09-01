@@ -20,12 +20,12 @@ public class BusinessCustomerController {
     }
 
     @PostMapping(path = BUSINESS_CUSTOMER_LOOKUP_URI)
-    public Mono<BusinessCustomer> lookup(@RequestBody Mono<String> taxId) {
-        return taxId.flatMap(id -> businessCustomerService.lookupCustomer(id));
+    public Mono<BusinessCustomer> lookup(@RequestBody String taxId) {
+        return businessCustomerService.lookupCustomer(taxId);
     }
 
     @PostMapping(path = BUSINESS_CUSTOMER_ADD_URI)
-    public Mono<BusinessCustomer> add(@RequestBody Mono<BusinessCustomer> customer) {
-        return customer.log().flatMap(cust -> businessCustomerService.addCustomer(cust));
+    public Mono<BusinessCustomer> add(@RequestBody BusinessCustomer customer) {
+        return businessCustomerService.addCustomer(customer);
     }
 }

@@ -15,8 +15,8 @@ public class PartsController {
     }
 
     @PostMapping(path = PARTS_ORDER_ADD_URI)
-    public Mono<PartsOrder> addPart(@RequestBody Mono<PartsOrder> partsOrder){
-        return partsOrder.flatMap(po -> partsService.addPart(po));
+    public Mono<PartsOrder> addPart(@RequestBody PartsOrder partsOrder){
+        return partsService.addPart(partsOrder);
     }
 
 

@@ -19,12 +19,12 @@ public class CustomerController {
     }
 
     @PostMapping(path = LOOKUP_CUSTOMER_URI)
-    public Mono<Customer> lookup(@RequestBody Mono<String> driversLicense){
-        return driversLicense.log().flatMap(dl -> customerService.lookupCustomer(dl));
+    public Mono<Customer> lookup(@RequestBody String driversLicense){
+        return customerService.lookupCustomer(driversLicense);
     }
 
     @PostMapping(path = ADD_CUSTOMER_URI)
-    public Mono<Customer> add(@RequestBody Mono<Customer> customer) {
-        return customer.log().flatMap(cust -> customerService.addCustomer(cust));
+    public Mono<Customer> add(@RequestBody Customer customer) {
+        return customerService.addCustomer(customer);
     }
 }
