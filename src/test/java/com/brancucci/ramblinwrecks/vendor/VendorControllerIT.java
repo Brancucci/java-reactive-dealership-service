@@ -19,6 +19,7 @@ import reactor.core.publisher.Mono;
 @ActiveProfiles({"test"})
 public class VendorControllerIT {
     private static final String VENDOR_LOOKUP_URI = "/vendor/lookup";
+    private static final String VENDOR_ADD_URI = "/vendor/add";
 
     @Autowired
     private WebTestClient webClient;
@@ -53,5 +54,33 @@ public class VendorControllerIT {
                 .expectStatus().isOk()
                 .expectBody()
                 .jsonPath("$.city").isEqualTo("Tampa");
+    }
+
+    @Test
+    public void addVendor_returnsVendor(){
+        VendorKey vendorKey = VendorKey.builder()
+                .vendorName("Vendor")
+                .partNumber("A1234")
+                .build();
+
+        Vendor vendor = Vendor.builder()
+                .vendorKey(vendorKey)
+                .street("123 1st St.")
+                .city("Tampa")
+                .state("FL")
+                .postalCode("33647")
+                .phone("1234567890")
+                .build();
+
+        Mockito.when(vendorRepository.save(vendor)).thenReturn(Mono.just(vendor));
+
+        webClient.post()
+                .uri(VENDOR_ADD_URI)
+                .body(BodyInserters.fromObject(vendor))
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.city").isEqualTo("Tampa");
+
     }
 }

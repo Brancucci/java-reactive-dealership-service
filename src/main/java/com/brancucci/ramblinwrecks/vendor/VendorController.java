@@ -19,4 +19,9 @@ public class VendorController {
     public Mono<Vendor> vendorLookup(@RequestBody  Mono<VendorKey> vendorKey){
         return vendorKey.flatMap(vk -> vendorService.vendorLookup(vk));
     }
+
+    @PostMapping(path = "/vendor/add")
+    public Mono<Vendor> vendorAdd(@RequestBody Mono<Vendor> vendor){
+        return vendor.flatMap(vend -> vendorService.vendorAdd(vend));
+    }
 }

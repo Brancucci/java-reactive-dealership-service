@@ -16,4 +16,8 @@ public class VendorService {
     public Mono<Vendor> vendorLookup(VendorKey vk){
         return vendorRepository.findById(vk);
     }
+
+    public Mono<Vendor> vendorAdd(Vendor vendor) {
+        return vendorRepository.save(vendor);
+    }
 }
